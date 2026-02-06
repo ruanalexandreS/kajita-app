@@ -1,0 +1,82 @@
+<section class="min-h-screen bg-[#FDF2F2] py-20 flex items-center justify-center">
+    <div class="container mx-auto px-4">
+
+        <div class="bg-white rounded-[3rem] shadow-xl p-8 md:p-16 border border-pink-50 max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+
+                <div class="space-y-6">
+                    <h2 class="text-3xl md:text-4xl font-serif text-[#2D3E50]">Nuestros horarios</h2>
+                    <div class="w-16 h-1 bg-[#FCD116]"></div>
+
+                    <div class="text-[13px] text-gray-600 space-y-4 font-medium pt-4">
+                        <p class="flex justify-between font-bold text-[#E91E63]">
+                            <span>Lunes - Viernes:</span> <b>8am - 8pm</b>
+                        </p>
+                        <p class="flex justify-between font-bold text-[#E91E63]">
+                            <span>Sábado:</span> <b>12:30pm - 8pm</b>
+                        </p>
+                        <p class="flex justify-between font-bold text-[#E91E63]">
+                            <span>Domingo:</span> <span>8am - 8pm</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative flex flex-col items-center my-8 lg:my-0">
+                    <button (click)="prevImage()"
+                        class="absolute left-[-20px] lg:left-[-30px] top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-300 hover:text-[#E91E63] transition-all">
+                        <span class="text-2xl pb-1">‹</span>
+                    </button>
+
+                    <div class="w-56 h-56 sm:w-64 sm:h-64 flex items-center justify-center">
+                        <img [src]="contactImages[currentImageIndex]" (mouseenter)="pauseAutoPlay()"
+                            (mouseleave)="resumeAutoPlay()"
+                            class="max-w-full max-h-full object-contain transition-all duration-500 transform hover:scale-105 cursor-pointer"
+                            alt="Mascota KajitA">
+                    </div>
+
+                    <button (click)="nextImage()"
+                        class="absolute right-[-20px] lg:right-[-30px] top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-300 hover:text-[#E91E63] transition-all">
+                        <span class="text-2xl pb-1">›</span>
+                    </button>
+
+                    <div class="flex gap-2 mt-8">
+                        @for (img of contactImages; track $index) {
+                        <div class="w-2.5 h-2.5 rounded-full transition-all"
+                            [class.bg-[#2D3E50]]="currentImageIndex === $index"
+                            [class.bg-gray-100]="$index !== currentImageIndex"></div>
+                        }
+                    </div>
+                </div>
+
+                <div class="space-y-6 lg:pl-10">
+                    <h2 class="text-3xl md:text-4xl font-serif text-[#2D3E50]">Contáctanos</h2>
+                    <div class="w-16 h-1 bg-[#FCD116]"></div>
+
+                    <div class="space-y-6 pt-4">
+                        <div class="group">
+                            <h4 class="text-[#2D3E50] font-bold text-[10px] uppercase tracking-widest mb-1">Dirección:
+                            </h4>
+                            <p class="flex justify-between font-bold text-[#E91E63]">Tienda Online 🌐</p>
+                        </div>
+                        <div class="group">
+                            <h4 class="text-[#2D3E50] font-bold text-[10px] uppercase tracking-widest mb-1">WhatsApp:
+                            </h4>
+                            <a href="https://wa.me/573170943854" target="_blank"
+                                class="flex justify-between text-[#E91E63] hover:text-[#25D366] transition-colors font-medium">
+                                3170943854 - 3103348262
+                            </a>
+                        </div>
+                        <div class="group">
+                            <h4 class="text-[#2D3E50] font-bold text-[10px] uppercase tracking-widest mb-1">Email:</h4>
+                            <a href="mailto:kajita.planes@gmail.com"
+                                class="flex justify-between text-[#E91E63] hover:text-[#E91E63] transition-colors font-medium">
+                                kajita.planes@gmail.com
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

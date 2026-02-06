@@ -1,0 +1,57 @@
+[
+{
+    "id": 200000008,
+    "name": "Netflix Night",
+    "price": 45000,
+    "image": "https://454ad2df30.cbaul-cdnwnd.com/6e2e4d428cfa4184c9b1bbfa60d561f6/200000002-5cffe5d000/Gemini_Generated_Image_da86p0da86p0da86%20(1).png?ph=454ad2df30"
+},
+{
+    "id": 200000007,
+    "name": "Picnic en Pareja",
+    "price": 85000,
+    "image": "https://454ad2df30.cbaul-cdnwnd.com/6e2e4d428cfa4184c9b1bbfa60d561f6/200000004-8343d8343f/Gemini_Generated_Image_4ko1yi4ko1yi4ko1.png?ph=454ad2df30"
+},
+{
+    "id": 200000006,
+    "name": "Fin de Semana Relax",
+    "price": 60000,
+    "image": "https://454ad2df30.cbaul-cdnwnd.com/6e2e4d428cfa4184c9b1bbfa60d561f6/200000006-ca750ca753/Gemini_Generated_Image_n52r5qn52r5qn52r.png?ph=454ad2df30"
+},
+{
+    "id": 200000005,
+    "name": "Desayuno a la Cama ☀️",
+    "price": 55000,
+    "image": "https://454ad2df30.cbaul-cdnwnd.com/6e2e4d428cfa4184c9b1bbfa60d561f6/200000008-7b5bb7b5bd/Gemini_Generated_Image_hikmdfhikmdfhikm.png?ph=454ad2df30"
+},
+{
+    "id": 200000004,
+    "name": "Parche con Amigos",
+    "price": 80000,
+    "image": "https://454ad2df30.cbaul-cdnwnd.com/6e2e4d428cfa4184c9b1bbfa60d561f6/200000010-7312c7312e/Gemini_Generated_Image_7mckoo7mckoo7mck.png?ph=454ad2df30"
+},
+{
+    "id": 200000003,
+    "name": "Regreso a Clases",
+    "price": 50000,
+    "image": "https://454ad2df30.cbaul-cdnwnd.com/6e2e4d428cfa4184c9b1bbfa60d561f6/200000012-507c8507c9/Gemini_Generated_Image_e3vj28e3vj28e3vj.png?ph=454ad2df30"
+},
+{
+    "id": 999,
+    "name": "Arma tu KajitA",
+    "price": 15000, 
+    "image": "assets/img/box-base.jpg",
+    "isCustomizable": true,
+    "availableItems": [
+{ "id": "i1", "name": "Peluche pequeño", "price": 12000 },
+{ "id": "i2", "name": "Cerveza Corona", "price": 8000 },
+{ "id": "i3", "name": "Chocolates Ferrero", "price": 25000 }
+    ]
+},
+{
+    "id": 200000008,
+    "name": "Netflix Night",
+    "price": 45000,
+    "image": "...",
+    "isCustomizable": false
+}
+]

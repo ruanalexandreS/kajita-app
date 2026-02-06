@@ -1,0 +1,103 @@
+<section class="relative bg-[#FDF2F2] overflow-hidden py-12 md:py-24 leading-snug">
+
+    <div class="absolute inset-0 z-0 pointer-events-none opacity-40" style="background-image: url('assets/images/products/plano_de_fundo.jpeg'); 
+            background-repeat: repeat; 
+            background-size: 640px auto;">
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+            <div class="flex justify-center md:justify-end">
+                <div
+                    class="relative w-full max-w-md aspect-square bg-white rounded-2xl shadow-lg overflow-hidden border-1 border-white">
+                    <img src="assets/images/products/caixas.jpeg" class="w-full h-full object-cover"
+                        alt="KajitA Especial">
+                </div>
+            </div>
+
+            <div class="text-center md:text-left space-y-6">
+                <h1 class="text-5xl md:text-7xl font-serif text-[#2D3E50] leading-tight">
+                    Crea momentos <br> únicos
+                    <span class="block w-20 h-1 bg-[#FCD116] mt-4 mx-auto md:mx-0"></span>
+                </h1>
+                <p class="text-lg text-gray-600 font-light max-w-sm mx-auto md:mx-0 leading-relaxed">
+                    En KajitA creemos que abrir una cajita puede convertirse en un boom de felicidad :)
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="bg-[#FDF2F2] pb-20 -mt-8 relative z-20">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+        <div class="bg-white rounded-[3rem] shadow-xl p-8 md:p-16 border border-pink-50">
+
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-serif text-[#2D3E50] mb-4">
+                    Personaliza tu Sorpresa
+                </h2>
+                <div class="w-24 h-1 bg-[#FCD116] mx-auto"></div>
+                <p class="mt-6 text-gray-500 font-light italic">
+                    Selecciona los elementos que harán vibrar su corazón
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                @for (item of items(); track item.id) {
+                <div class="group flex flex-col transition-all">
+                    <div
+                        class="aspect-square relative overflow-hidden rounded-3xl mb-4 shadow-sm border border-gray-100">
+                        <img [src]="item.image" [alt]="item.name"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+
+                    <div class="px-2">
+                        <h3 class="text-xl font-serif text-gray-800 mb-1">{{ item.name }}</h3>
+                        <p class="text-[#E91E63] font-bold text-lg mb-4">$ {{ item.price | number:'1.0-0' }} COP</p>
+
+                        <div
+                            class="flex items-center justify-between bg-gray-50 rounded-2xl p-2 border border-gray-100">
+                            <button (click)="updateQuantity(item.id, -1)"
+                                class="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-[#E91E63] transition-colors">-</button>
+                            <span class="font-bold text-gray-700">{{ item.quantity }}</span>
+                            <button (click)="updateQuantity(item.id, 1)"
+                                class="w-10 h-10 flex items-center justify-center text-[#E91E63] font-bold">+</button>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+
+            <div class="max-w-2xl mx-auto border-t border-dashed border-gray-200 pt-12">
+                <div class="space-y-3 mb-8">
+                    <div class="flex justify-between text-gray-600 text-sm">
+                        <span>Subtotal productos:</span>
+                        <span>$ {{ (totalPrice() > 0 ? totalPrice() - basePrice() : 0) | number:'1.0-0' }} COP</span>
+                    </div>
+                    <div class="flex justify-between text-[#E91E63] text-sm font-medium">
+                        <span>Base decoración y caja 🎁:</span>
+                        <span>$ {{ basePrice() | number:'1.0-0' }} COP</span>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                        <span class="text-gray-400 uppercase tracking-widest text-xs font-bold">Total del pedido</span>
+                        <span class="text-3xl font-black text-[#2D3E50]">$ {{ totalPrice() | number:'1.0-0' }}
+                            COP</span>
+                    </div>
+                </div>
+
+                <button (click)="confirmOrder()" [disabled]="totalPrice() === 0"
+                    class="w-full bg-[#E91E63] hover:bg-[#C2185B] text-white font-bold py-5 rounded-2xl shadow-lg transition-all transform hover:-translate-y-1 active:scale-95 flex justify-center items-center gap-3">
+                    Pedir mi KajitA por WhatsApp 📱
+                </button>
+
+                <p class="text-[20px] text-gray-400 text-center mt-4">
+                    El valor del domicilio se acuerda según la ubicación.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>

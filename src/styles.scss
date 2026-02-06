@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Prata&family=Inter:wght@300;400;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif; // Para textos comuns
+}
+
+.font-serif {
+  font-family: 'Prata', serif; // Para os títulos e logo
+}
