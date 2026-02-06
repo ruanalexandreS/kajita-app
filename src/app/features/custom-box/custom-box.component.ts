@@ -2,11 +2,12 @@ import { Component, signal, computed, inject } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { BoxService } from '../../core/services/box.service';
 import { BoxItem } from '../../core/models/box.model';
+import { PreFooterComponent } from '../../shared/components/pre-footer/pre-footer.component';
 
 @Component({
     selector: 'app-custom-box',
     standalone: true,
-    imports: [CommonModule, DecimalPipe],
+    imports: [CommonModule, DecimalPipe, PreFooterComponent],
     templateUrl: './custom-box.component.html',
     styleUrls: ['./custom-box.component.scss'] as any
 })
@@ -47,7 +48,6 @@ export class CustomBoxComponent {
         this.boxService.generateWhatsAppOrder(selected, this.totalPrice());
     }
 
-    // No seu CustomBoxComponent
     currentImageIndex = 0;
 
     contactImages = [
