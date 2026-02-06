@@ -1,62 +1,43 @@
-<div class="bg-white border-b border-gray-100 py-3 hidden sm:block">
+<div class="bg-white border-b border-gray-100 py-2">
     <div
-        class="container mx-auto px-4 sm:px-6 flex justify-end items-center gap-8 text-xs font-medium text-gray-500 tracking-wide">
+        class="container mx-auto px-4 flex flex-col sm:flex-row justify-center sm:justify-end items-center gap-3 sm:gap-8 text-[10px] sm:text-xs font-medium text-gray-500">
 
-        <a href="mailto:kajita.planes@gmail.com" class="flex items-center gap-2 transition-colors hover:text-[#E91E63]">
-            <span class="text-base">✉️</span> kajita.planes@gmail.com
+        <a [href]="'mailto:' + contactInfo.email + '?subject=KajitA&body=¡Hola! Me gustaría pedir una KajitA personalizada'"
+            class="flex items-center gap-2 transition-all duration-300 hover:text-[#E91E63] hover:scale-105">
+            <span>✉️</span> {{ contactInfo.email }}
         </a>
 
-        <a href="https://wa.me/573170943854" target="_blank"
-            class="flex items-center gap-2 transition-colors hover:text-[#25D366]">
-            <span class="text-base">📞</span> 3170943854 - 3103348262
+        <a href="https://wa.me/573170943854?text=%C2%A1Hola!%20Me%20gustar%C3%ADa%20pedir%20una%20KajitA%20personalizada"
+            target="_blank"
+            class="flex items-center gap-2 transition-all duration-300 hover:text-[#25D366] hover:scale-105 active:scale-95">
+            <span class="text-[#E91E63]">📞</span>
+            <span>{{ contactInfo.phones }}</span>
         </a>
     </div>
 </div>
 
-<header class="bg-white sticky top-0 z-50 shadow-sm md:shadow-none">
-    <nav class="container mx-auto px-4 py-6 flex justify-between items-center">
+<header class="bg-white sticky top-0 z-50 shadow-sm">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="text-2xl font-serif text-[#2D3E50]">KajitA</div>
 
-        <div class="text-2xl md:text-3xl font-serif text-[#2D3E50]">KajitA</div>
-
-        <ul class="hidden md:flex items-center gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">
-
-            <li>
-                <a routerLink="/" routerLinkActive="text-[#E91E63]" [routerLinkActiveOptions]="{exact: true}"
-                    class="transition-all duration-300 hover:text-[#E91E63] cursor-pointer">
-                    Inicio
-                </a>
+        <ul class="hidden md:flex items-center gap-8 text-[11px] font-bold uppercase tracking-widest text-gray-400">
+            <li><a routerLink="/" routerLinkActive="text-[#E91E63]" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
             </li>
-
-            <li>
-                <a routerLink="/productos" routerLinkActive="text-[#E91E63]"
-                    class="transition-all duration-300 hover:text-[#E91E63] cursor-pointer">
-                    Productos
-                </a>
-            </li>
-
-            <li>
-                <a routerLink="/sobre-mi" routerLinkActive="text-[#E91E63]"
-                    class="transition-all duration-300 hover:text-[#E91E63] cursor-pointer">
-                    Sobre mí
-                </a>
-            </li>
-
-            <li>
-                <a routerLink="/contacto" routerLinkActive="text-[#E91E63]"
-                    class="transition-all duration-300 hover:text-[#E91E63] cursor-pointer">
-                    Contacto
-                </a>
-            </li>
+            <li><a routerLink="/productos" routerLinkActive="text-[#E91E63]">Productos</a></li>
+            <li><a routerLink="/sobre-mi" routerLinkActive="text-[#E91E63]">Sobre mí</a></li>
+            <li><a routerLink="/contacto" routerLinkActive="text-[#E91E63]">Contacto</a></li>
         </ul>
 
-        <div class="flex items-center gap-4 text-gray-500">
-            <div class="flex items-center gap-2 text-sm">
-                <span class="hidden sm:inline">Cesta</span>
-                <div class="border border-gray-300 p-1 rounded-sm">
-                    <span class="text-lg">🛒</span>
-                </div>
-            </div>
-            <button class="md:hidden text-2xl">☰</button>
-        </div>
+        <button (click)="toggleMenu()" class="md:hidden text-3xl text-[#2D3E50]">
+            {{ isMenuOpen() ? '✕' : '☰' }}
+        </button>
     </nav>
+
+    <div *ngIf="isMenuOpen()" class="md:hidden bg-white border-t border-gray-100 flex flex-col p-6 space-y-4 shadow-xl">
+        <a routerLink="/" (click)="toggleMenu()" class="text-sm font-bold uppercase text-gray-600">Inicio</a>
+        <a routerLink="/productos" (click)="toggleMenu()"
+            class="text-sm font-bold uppercase text-gray-600">Productos</a>
+        <a routerLink="/sobre-mi" (click)="toggleMenu()" class="text-sm font-bold uppercase text-gray-600">Sobre mí</a>
+        <a routerLink="/contacto" (click)="toggleMenu()" class="text-sm font-bold uppercase text-gray-600">Contacto</a>
+    </div>
 </header>

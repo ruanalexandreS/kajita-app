@@ -4,6 +4,9 @@ name: string;
 price: number;
 quantity: number;
 image: string;
+description: string;
+features?: string[];
+cardMessage?: string;
 }
 
 export interface CustomizableBox {
