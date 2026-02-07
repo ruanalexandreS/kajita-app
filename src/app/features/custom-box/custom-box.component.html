@@ -1,11 +1,12 @@
-<section class="bg-gradient-to-b from-[#FDF2F2] to-white py-20 overflow-hidden">
+<section class="bg-gradient-to-b from-[#FDF2F2] to-white pt-20 pb-40 overflow-hidden">
     <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-16">
+
         <div class="w-full md:w-1/2 relative group">
-            <div
-                class="absolute -inset-4 bg-[#FCD116] opacity-10 blur-2xl rounded-full group-hover:opacity-20 transition-opacity">
+            <div class="absolute -inset-4 bg-[#E91E63] opacity-20 blur-3xl rounded-full group-hover:opacity-30 transition-opacity duration-700 animate-pulse">
             </div>
+            
             <img src="assets/images/products/caixas.jpeg"
-                class="rounded-[3rem] shadow-2xl relative z-10 w-full object-cover aspect-square md:aspect-auto"
+                class="rounded-[3rem] shadow-2xl relative z-10 w-full object-cover aspect-square md:aspect-auto transition-all duration-500 group-hover:scale-105 group-hover:brightness-110 cursor-pointer"
                 alt="Momentos únicos">
         </div>
 
@@ -22,12 +23,14 @@
                 Ver Colección
             </button>
         </div>
+
     </div>
 </section>
 
 <section class="bg-[#FDF2F2] pb-20 relative z-20">
     <div class="container mx-auto px-4 max-w-6xl">
         <div class="bg-white rounded-[3rem] shadow-xl p-8 md:p-16 border border-pink-50">
+            
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-serif text-[#2D3E50] mb-4">
                     Personaliza tu Sorpresa
@@ -41,8 +44,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                 @for (item of items(); track item.id) {
                 <div class="group flex flex-col transition-all">
-                    <div
-                        class="aspect-square relative overflow-hidden rounded-3xl mb-1 shadow-sm border border-gray-100">
+                    <div class="aspect-square relative overflow-hidden rounded-3xl mb-1 shadow-sm border border-gray-100">
                         <img [src]="item.image" [alt]="item.name"
                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                     </div>
@@ -74,8 +76,7 @@
                             </p>
                         </div>
 
-                        <div
-                            class="flex items-center justify-between bg-gray-50 rounded-2xl p-2 border border-gray-100">
+                        <div class="flex items-center justify-between bg-gray-50 rounded-2xl p-2 border border-gray-100">
                             <button (click)="updateQuantity(item.id, -1)"
                                 class="w-10 h-10 text-gray-400 hover:text-[#E91E63]">-</button>
                             <span class="font-bold text-gray-700">{{ item.quantity }}</span>
@@ -90,13 +91,13 @@
             <div class="max-w-2xl mx-auto border-t border-dashed border-gray-200 pt-12 space-y-6">
                 <div class="flex justify-between text-gray-600 text-sm">
                     <span>Subtotal productos:</span>
-                    <span class="font-medium">{{ totalPrice() | currency:'COP':'symbol-narrow':'1.2-2' }}</span>
+                    <span class="font-medium">{{ totalPrice() | currency:'COP':'symbol-narrow':'1.2-2' }} COP</span>
                 </div>
 
                 <div class="flex flex-col sm:flex-row justify-between items-center pt-4 border-t border-gray-100 gap-4">
                     <span class="text-gray-400 uppercase tracking-widest text-xs font-bold">Total del pedido</span>
                     <span class="text-3xl sm:text-4xl font-black text-[#2D3E50]">
-                        {{ totalPrice() | currency:'COP':'symbol-narrow':'1.2-2' }}
+                        {{ totalPrice() | currency:'COP':'symbol-narrow':'1.2-2' }} COP
                     </span>
                 </div>
 
@@ -108,4 +109,5 @@
         </div>
     </div>
 </section>
+
 <app-pre-footer></app-pre-footer>

@@ -8,7 +8,7 @@ export const routes: Routes = [
     },
     {
         path: 'productos',
-        loadComponent: () => import('./features/custom-box/custom-box.component').then(m => m.CustomBoxComponent),
+        loadComponent: () => import('./features/products/products.component').then(m => m.ProductsComponent),
         title: 'Productos | KajitA'
     },
     {

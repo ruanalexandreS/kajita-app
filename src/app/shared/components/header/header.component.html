@@ -20,14 +20,27 @@
     <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
         <div class="text-2xl font-serif text-[#2D3E50]">KajitA</div>
 
-        <ul class="hidden md:flex items-center gap-8 text-[11px] font-bold uppercase tracking-widest text-gray-400">
-            <li><a routerLink="/" routerLinkActive="text-[#E91E63]" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
-            </li>
-            <li><a routerLink="/productos" routerLinkActive="text-[#E91E63]">Productos</a></li>
-            <li><a routerLink="/sobre-mi" routerLinkActive="text-[#E91E63]">Sobre mí</a></li>
-            <li><a routerLink="/contacto" routerLinkActive="text-[#E91E63]">Contacto</a></li>
-        </ul>
+        <nav class="hidden md:flex items-center gap-8">
+            <a routerLink="/" routerLinkActive="text-[#E91E63]" [routerLinkActiveOptions]="{exact: true}"
+                class="text-sm font-bold uppercase tracking-widest text-black-400 transition-all duration-300 hover:text-[#E91E63] hover:scale-110 cursor-pointer">
+                Inicio
+            </a>
 
+            <a routerLink="/productos" routerLinkActive="text-[#E91E63]"
+                class="text-sm font-bold uppercase tracking-widest text-black-400 transition-all duration-300 hover:text-[#E91E63] hover:scale-110 cursor-pointer">
+                Productos
+            </a>
+
+            <a routerLink="/sobre-mi" routerLinkActive="text-[#E91E63]"
+                class="text-sm font-bold uppercase tracking-widest text-black-400 transition-all duration-300 hover:text-[#E91E63] hover:scale-110 cursor-pointer">
+                Sobre mí
+            </a>
+
+            <a routerLink="/contacto" routerLinkActive="text-[#E91E63]"
+                class="text-sm font-bold uppercase tracking-widest text-black-400 transition-all duration-300 hover:text-[#E91E63] hover:scale-110 cursor-pointer">
+                Contacto
+            </a>
+        </nav>
         <button (click)="toggleMenu()" class="md:hidden text-3xl text-[#2D3E50]">
             {{ isMenuOpen() ? '✕' : '☰' }}
         </button>

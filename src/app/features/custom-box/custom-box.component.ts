@@ -1,5 +1,5 @@
 import { Component, signal, computed, inject } from '@angular/core';
-import { CommonModule, DecimalPipe } from '@angular/common';
+import { CommonModule} from '@angular/common';
 import { BoxService } from '../../core/services/box.service';
 import { BoxItem } from '../../core/models/box.model';
 import { PreFooterComponent } from '../../shared/components/pre-footer/pre-footer.component';
@@ -7,7 +7,7 @@ import { PreFooterComponent } from '../../shared/components/pre-footer/pre-foote
 @Component({
     selector: 'app-custom-box',
     standalone: true,
-    imports: [CommonModule, DecimalPipe, PreFooterComponent],
+    imports: [CommonModule, PreFooterComponent],
     templateUrl: './custom-box.component.html',
     styleUrls: ['./custom-box.component.scss'] as any
 })

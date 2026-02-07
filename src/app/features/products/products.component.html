@@ -1,0 +1,23 @@
+<div class="bg-[#FDF2F2] pt-32 pb-16">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-6xl font-serif text-[#2D3E50] mb-4 font-bold">Nuestra Colección</h1>
+        <div class="w-24 h-1 bg-[#FCD116] mx-auto mb-4"></div>
+        <p class="text-gray-500 italic">Regalos que crean momentos inolvidables ✨</p>
+    </div>
+</div>
+
+<section class="bg-white py-20">
+    <div class="container mx-auto px-4 max-w-6xl">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+            @for (item of items(); track item.id) {
+                <div class="group flex flex-col">
+                    <img [src]="item.image" class="rounded-3xl shadow-lg mb-4">
+                    <h3 class="text-xl font-serif font-bold text-gray-800">{{ item.name }}</h3>
+                    <p class="text-[#E91E63] font-bold text-lg mb-4">
+                        {{ item.price | currency:'COP':'symbol-narrow':'1.2-2' }} COP
+                    </p>
+                    </div>
+            }
+        </div>
+    </div>
+</section>
