@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kajita-app.vercel.app/sitemap.xml
