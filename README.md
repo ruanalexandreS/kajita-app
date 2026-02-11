@@ -7,7 +7,9 @@ O projeto **KajitA** é uma plataforma e-commerce boutique desenvolvida para fac
 * **Catálogo Dinâmico**: Exibição de 9 kits exclusivos (ex: *Netflix Night*, *Picnic en Pareja*, *Dulzura Express*) com detalhes completos de itens e preços em COP.
 * **Cálculo Reativo**: Atualização instantânea do valor total conforme o usuário adiciona ou remove itens da sua "KajitA".
 * **Integração com WhatsApp**: Geração automática de mensagens estruturadas para fechamento de pedido, enviando a lista de desejos do cliente diretamente para o vendedor.
-* **SEO & Compartilhamento**: Implementação de metadados dinâmicos e Open Graph para que o link apareça com foto e descrição no Instagram e WhatsApp.
+* **Suporte Global em Tempo Real**: Botão flutuante de WhatsApp implementado no `app.component`, permitindo atendimento instantâneo em qualquer página do site.
+* **Links de Contato Inteligentes**: Uso de *URL Encoding* para preencher automaticamente mensagens no WhatsApp e Gmail, reduzindo o atrito e aumentando a conversão.
+* **SEO & Compartilhamento**: Implementação de metadados dinâmicos e *Open Graph* para que o link apareça com foto e descrição no Instagram e WhatsApp.
 
 ---
 
@@ -21,6 +23,7 @@ O projeto foi construído utilizando as melhores práticas de arquitetura modula
 | **TypeScript** | Garantia de tipagem forte e segurança no desenvolvimento da lógica. |
 | **Tailwind CSS** | Estilização moderna e responsiva focada em uma UI "Boutique". |
 | **Angular Signals** | Gerenciamento de estado reativo para preços e quantidades. |
+| **Ícones em SVG** | Vetores matemáticos integrados para garantir nitidez máxima e alta performance. |
 | **Vercel** | Hospedagem de alta performance com deploy contínuo. |
 
 ---
