@@ -1,6 +1,7 @@
-import { Component, signal, computed, inject } from '@angular/core';
+import { Component, signal, computed, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CommonModule} from '@angular/common';
+import { Title, Meta } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { BoxService } from '../../core/services/box.service';
 import { BoxItem } from '../../core/models/box.model';
 import { PreFooterComponent } from '../../shared/components/pre-footer/pre-footer.component';
@@ -12,18 +13,43 @@ import { PreFooterComponent } from '../../shared/components/pre-footer/pre-foote
     templateUrl: './custom-box.component.html',
     styleUrls: ['./custom-box.component.scss'] as any
 })
-export class CustomBoxComponent {
+export class CustomBoxComponent implements OnInit {
+    // 1. Injeções de Dependência
     private boxService = inject(BoxService);
+    private titleService = inject(Title);
+    private metaService = inject(Meta);
 
-  // Agora a Home puxa os dados do mesmo lugar que a página de Productos
-items = this.boxService.items;
+    // 2. Propriedades da Classe (Devem ficar fora das funções)
+    items = this.boxService.items; // Puxa os dados centralizados
+    currentImageIndex = 0;
+    contactImages = [
+        'assets/images/products/kajita_plan.jpeg',
+        'assets/images/products/kajita_telefono.jpeg',
+        'assets/images/products/karija_horarios.jpeg'
+    ];
 
-    // Cálculo reativo: multiplica preço pela quantidade de cada item
+    // 3. Cálculos Reativos
     totalPrice = computed(() => {
         return this.items().reduce((acc, item) => acc + (item.price * item.quantity), 0);
     });
 
-    // Função para as setas (aumentar/diminuir)
+    // 4. Ciclo de Vida: SEO acontece ao iniciar
+    ngOnInit(): void {
+        this.titleService.setTitle('KajitA | Regalos Personalizados y Detalles Únicos');
+
+        this.metaService.addTags([
+            { name: 'description', content: 'Crea momentos únicos con nossas cajitas de regalo personalizadas en Colombia.' },
+            { name: 'keywords', content: 'regalos, detalles, cajas surpresa, Colombia, KajitA' },
+            { name: 'robots', content: 'index, follow' }
+        ]);
+
+        this.metaService.addTags([
+            { property: 'og:title', content: 'KajitA - Crea Momentos Únicos' },
+            { property: 'og:image', content: 'assets/images/logo_og.png' }
+        ]);
+    }
+
+    // 5. Métodos da Classe (Funções que o HTML vai chamar)
     updateQuantity(id: string, delta: number) {
         this.items.update(prevItems =>
             prevItems.map((item: BoxItem) =>
@@ -36,16 +62,8 @@ items = this.boxService.items;
 
     confirmOrder() {
         const selected = this.items().filter((i: BoxItem) => i.quantity > 0);
-        this.boxService.generateWhatsAppOrder(selected, this.totalPrice());
+        this.boxService.generateWhatsAppOrder(selected, this.totalPrice()); //
     }
-
-    currentImageIndex = 0;
-
-    contactImages = [
-        'assets/images/products/kajita_plan.jpeg',    // Bonequinho com logo
-        'assets/images/products/kajita_telefono.jpeg', // Bonequinho telefone
-        'assets/images/products/karija_horarios.jpeg'  // Bonequinho horários
-    ];
 
     nextImage() {
         this.currentImageIndex = (this.currentImageIndex + 1) % this.contactImages.length;
