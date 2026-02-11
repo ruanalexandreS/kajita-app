@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BoxService } from '../../core/services/box.service'; //
 
@@ -10,9 +10,35 @@ import { BoxService } from '../../core/services/box.service'; //
   styleUrls: ['./products.component.scss'] as any,
 })
 export class ProductsComponent {
-  // Injetamos o serviço central
+  // Injeção de dependência do serviço central
   private boxService = inject(BoxService);
-  
-  // Puxamos a lista reativa de itens diretamente do "cérebro" (service)
-  items = this.boxService.items; 
+
+  // Puxamos os 9 itens diretamente da "Fonte Única de Verdade"
+  items = this.boxService.items;
+
+  // Cálculo reativo do total (mesma lógica que tínhamos na Home)
+  totalPrice = computed(() => {
+    return this.items().reduce((acc, item) => acc + (item.price * item.quantity), 0);
+  });
+
+  // Função para aumentar ou diminuir a quantidade
+  updateQuantity(id: string, delta: number): void {
+    this.items.update(prevItems =>
+      prevItems.map(item =>
+        item.id === id
+          ? { ...item, quantity: Math.max(0, item.quantity + delta) }
+          : item
+      )
+    );
+  }
+
+  // Finaliza o pedido chamando a função do WhatsApp no Serviço
+  confirmOrder(): void {
+    const selectedItems = this.items().filter(item => item.quantity > 0);
+    const total = this.totalPrice();
+
+    if (selectedItems.length > 0) {
+      this.boxService.generateWhatsAppOrder(selectedItems, total);
+    }
+  }
 }

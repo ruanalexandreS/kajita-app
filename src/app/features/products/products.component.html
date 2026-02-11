@@ -1,23 +1,73 @@
-<div class="bg-[#FDF2F2] pt-32 pb-16">
-    <div class="container mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-6xl font-serif text-[#2D3E50] mb-4 font-bold">Nuestra Colección</h1>
-        <div class="w-24 h-1 bg-[#FCD116] mx-auto mb-4"></div>
-        <p class="text-gray-500 italic">Regalos que crean momentos inolvidables ✨</p>
-    </div>
-</div>
-
-<section class="bg-white py-20">
+<div class="bg-[#FDF2F2] pt-32 pb-20 min-h-screen">
     <div class="container mx-auto px-4 max-w-6xl">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-            @for (item of items(); track item.id) {
-                <div class="group flex flex-col">
-                    <img [src]="item.image" class="rounded-3xl shadow-lg mb-4">
-                    <h3 class="text-xl font-serif font-bold text-gray-800">{{ item.name }}</h3>
-                    <p class="text-[#E91E63] font-bold text-lg mb-4">
-                        {{ item.price | currency:'COP':'symbol-narrow':'1.2-2' }} COP
-                    </p>
+
+        <div class="bg-white rounded-[3rem] shadow-xl p-8 md:p-16 border border-pink-50">
+
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-5xl font-serif text-[#2D3E50] mb-4">Nuestra Colección</h1>
+                <div class="w-24 h-1 bg-[#FCD116] mx-auto"></div>
+                <p class="mt-6 text-gray-500 font-light italic">Regalos que crean momentos inolvidables ✨</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 mb-16">
+                @for (item of items(); track item.id) {
+                <div class="group flex flex-col h-full">
+
+                    <div class="aspect-square relative overflow-hidden rounded-3xl mb-6 shadow-sm">
+                        <img [src]="item.image" [alt]="item.name"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <p class="absolute bottom-2 left-0 right-0 text-center text-[10px] text-gray-400 italic">
+                            *Las imágenes son netamente de referencia
+                        </p>
                     </div>
-            }
+
+                    <h3 class="text-2xl font-serif text-[#2D3E50] mb-1 font-bold">{{ item.name }}</h3>
+                    <p class="text-gray-400 italic text-sm mb-4 leading-relaxed">{{ item.description }}</p>
+
+                    <p class="text-[#E91E63] font-bold text-2xl mb-6">
+                        $ {{ item.price.toLocaleString('es-CO') }} COP
+                    </p>
+
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        @for (feature of item.features; track $index) {
+                        <li class="flex items-start gap-2 text-sm text-gray-600 leading-tight">
+                            <span class="text-[#FCD116] font-bold">›</span>
+                            {{ feature }}
+                        </li>
+                        }
+                    </ul>
+
+                    <div class="bg-[#FFFDE7] border-l-4 border-[#FCD116] p-4 mb-8">
+                        <p class="text-[11px] text-gray-500 font-bold mb-1 uppercase tracking-wider">Tarjeta:</p>
+                        <p class="text-sm text-gray-700 italic font-medium">"{{ item.cardMessage }}"</p>
+                    </div>
+
+                    <div
+                        class="flex items-center justify-between bg-gray-50 rounded-2xl p-2 border border-gray-100 mt-auto">
+                        <button (click)="updateQuantity(item.id, -1)"
+                            class="w-10 h-10 flex items-center justify-center text-gray-300 hover:text-[#E91E63] text-2xl">-</button>
+                        <span class="font-bold text-gray-700 text-lg">{{ item.quantity }}</span>
+                        <button (click)="updateQuantity(item.id, 1)"
+                            class="w-10 h-10 flex items-center justify-center text-[#E91E63] text-2xl hover:bg-white rounded-xl transition-all">+</button>
+                    </div>
+                </div>
+                }
+            </div>
+
+            <div class="max-w-2xl mx-auto border-t border-dashed border-gray-200 pt-12 text-center">
+                <div class="flex justify-between items-center mb-6 px-4">
+                    <span class="text-gray-400 italic">Subtotal produtos:</span>
+                    <span class="text-gray-600 font-medium">$ {{ totalPrice().toLocaleString('es-CO') }} COP</span>
+                </div>
+                <p class="text-5xl font-black text-[#2D3E50] mb-10">
+                    TOTAL: $ {{ totalPrice().toLocaleString('es-CO') }} COP
+                </p>
+                <button (click)="confirmOrder()" [disabled]="totalPrice() === 0"
+                    class="w-full bg-[#E91E63] hover:bg-[#C2185B] text-white font-bold py-6 rounded-2xl shadow-xl transition-all transform active:scale-95 disabled:opacity-30">
+                    PEDIR MI KAJITA POR WHATSAPP 📱
+                </button>
+            </div>
+
         </div>
     </div>
-</section>
+</div>
