@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
     imports: [CommonModule],
     templateUrl: './contact.component.html',
 })
-// Implementamos OnInit e OnDestroy para gerenciar o timer
+// Implementamei OnInit e OnDestroy para gerenciar o timer
 export class ContactComponent implements OnInit, OnDestroy {
     currentImageIndex = 0;
     private autoPlayInterval: any; // Variável para guardar o timer

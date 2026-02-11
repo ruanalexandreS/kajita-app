@@ -1,6 +1,6 @@
 import { Component, inject, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BoxService } from '../../core/services/box.service'; //
+import { BoxService } from '../../core/services/box.service';
 
 @Component({
   selector: 'app-products',
@@ -13,10 +13,10 @@ export class ProductsComponent {
   // Injeção de dependência do serviço central
   private boxService = inject(BoxService);
 
-  // Puxamos os 9 itens diretamente da "Fonte Única de Verdade"
+  // Puxamos os 9 itens diretamente da BoxService"
   items = this.boxService.items;
 
-  // Cálculo reativo do total (mesma lógica que tínhamos na Home)
+  // Cálculo reativo do total
   totalPrice = computed(() => {
     return this.items().reduce((acc, item) => acc + (item.price * item.quantity), 0);
   });

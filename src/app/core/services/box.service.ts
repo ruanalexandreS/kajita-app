@@ -5,7 +5,7 @@ import { BoxItem } from '../models/box.model';
 export class BoxService {
   private readonly PHONE = '573170943854';
 
-  // Agora os itens moram aqui! Qualquer página pode puxar daqui.
+  // Qualquer página pode puxar os items daqui.
   items = signal<BoxItem[]>([
     { 
       id: '1', name: 'Netflix Night', price: 45000, quantity: 0, 
@@ -72,7 +72,7 @@ export class BoxService {
     }
   ]);
 
-  // Sua função de WhatsApp (mantida exatamente como você colocou)
+  // Função do WhatsApp
   generateWhatsAppOrder(items: BoxItem[], total: number): void {
     let message = `¡Hola! Me gustaría pedir estas KajitAs:%0A%0A`;
     items.forEach(item => {

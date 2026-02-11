@@ -20,7 +20,7 @@ export class CustomBoxComponent implements OnInit {
     private metaService = inject(Meta);
 
     // 2. Propriedades da Classe (Devem ficar fora das funções)
-    items = this.boxService.items; // Puxa os dados centralizados
+    items = this.boxService.items;
     currentImageIndex = 0;
     contactImages = [
         'assets/images/products/kajita_plan.jpeg',
@@ -35,7 +35,7 @@ export class CustomBoxComponent implements OnInit {
 
     // 4. Ciclo de Vida: SEO acontece ao iniciar
     ngOnInit(): void {
-        this.titleService.setTitle('KajitA | Regalos Personalizados y Detalles Únicos');
+        this.titleService.setTitle('KajitA | Regalos Personalizados');
 
         this.metaService.addTags([
             { name: 'description', content: 'Crea momentos únicos con nossas cajitas de regalo personalizadas en Colombia.' },

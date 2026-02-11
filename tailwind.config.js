@@ -6,8 +6,8 @@ module.exports = {
 theme: {
   extend: {
     colors: {
-      'kajita-pink': '#FDF2F2', // O rosa pastel que você escolheu
-      'kajita-primary': '#E91E63', // O rosa forte da marca
+      'kajita-pink': '#FDF2F2',
+      'kajita-primary': '#E91E63',
     },
   },
 },

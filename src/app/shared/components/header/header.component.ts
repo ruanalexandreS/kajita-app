@@ -14,7 +14,6 @@ export class HeaderComponent {
   // Signal para o menu mobile
   isMenuOpen = signal(false);
 
-  // Suas mensagens de contato que haviam "sumido"
   contactInfo = {
     email: 'kajita.planes@gmail.com',
     phones: '3170943854 - 3103348262'
