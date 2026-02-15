@@ -11,7 +11,7 @@ import { PreFooterComponent } from '../../shared/components/pre-footer/pre-foote
     standalone: true,
     imports: [CommonModule, PreFooterComponent, RouterLink],
     templateUrl: './custom-box.component.html',
-    styleUrls: ['./custom-box.component.scss'] as any
+    styleUrl: './custom-box.component.scss'
 })
 export class CustomBoxComponent implements OnInit {
     // 1. Injeções de Dependência
