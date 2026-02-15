@@ -7,7 +7,7 @@ import { BoxService } from '../../core/services/box.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss'] as any,
+  styleUrl: './products.component.scss',
 })
 export class ProductsComponent {
   // Injeção de dependência do serviço central

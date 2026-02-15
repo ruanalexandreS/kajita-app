@@ -8,7 +8,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.html',
-styleUrls: ['./app.scss'] as any
+styleUrl: './app.scss'
 })
 export class App {
   protected readonly title = signal('KajitA');

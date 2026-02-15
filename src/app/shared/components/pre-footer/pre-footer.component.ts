@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-pre-footer',
   imports: [],
   templateUrl: './pre-footer.component.html',
-styleUrls: ['./pre-footer.component.scss'] as any
+styleUrl: './pre-footer.component.scss'
 })
 export class PreFooterComponent {
 
