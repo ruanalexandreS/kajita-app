@@ -1,10 +1,10 @@
 import { Component, signal, OnInit, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { inject as injectAnalytics } from '@vercel/analytics';
 import { injectSpeedInsights } from '@vercel/speed-insights';
-import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -15,13 +15,14 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class App implements OnInit {
   protected readonly title = signal('KajitA');
-ngOnInit(): void {
-    const platformId = inject(PLATFORM_ID); // Identifica onde o código está rodando
 
-    if (isPlatformBrowser(platformId)) { // Só entra aqui se for no navegador do cliente
+  private platformId = inject(PLATFORM_ID);
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
       injectAnalytics();
       injectSpeedInsights();
-      console.log('Vercel Analytics ativado no navegador! 🚀');
+      console.log('Vercel Analytics & Speed Insights ativos na KajitA! 🚀');
     }
   }
 }
