@@ -16,7 +16,7 @@ export class HeaderComponent {
 
   contactInfo = {
     email: 'kajita.planes@gmail.com',
-    phones: '3170943854 - 3103348262'
+    phones: '3238864914'
   };
 
   toggleMenu() {

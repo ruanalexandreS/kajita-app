@@ -3,7 +3,7 @@ import { BoxItem } from '../models/box.model';
 
 @Injectable({ providedIn: 'root' })
 export class BoxService {
-  private readonly PHONE = '573170943854';
+  private readonly PHONE = '573238864914';
 
   // Qualquer página pode puxar os items daqui.
   items = signal<BoxItem[]>([
