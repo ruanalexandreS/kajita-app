@@ -22,7 +22,7 @@ export class App implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       injectAnalytics();
       injectSpeedInsights();
-      console.log('Vercel Analytics & Speed Insights ativos na KajitA! 🚀');
+      console.log('KajitA online e monitorada! 🚀');
     }
   }
 }
