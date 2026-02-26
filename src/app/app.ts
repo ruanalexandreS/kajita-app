@@ -1,11 +1,9 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { inject as injectAnalytics } from '@vercel/analytics';
 import { injectSpeedInsights } from '@vercel/speed-insights';
-import { inject } from '@vercel/analytics';
-
-inject();
 
 @Component({
   selector: 'app-root',
@@ -14,6 +12,11 @@ inject();
   templateUrl: './app.html',
 styleUrls: ['./app.scss'] as any
 })
-export class App {
+export class App implements OnInit{
   protected readonly title = signal('KajitA');
+  ngOnInit(): void {
+    // Inicializa a monitorização de tráfego assim que o site carrega
+    injectAnalytics();
+    injectSpeedInsights();
+}
 }
