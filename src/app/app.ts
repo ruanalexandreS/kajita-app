@@ -3,8 +3,6 @@ import { isPlatformBrowser } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
-import { inject as injectAnalytics } from '@vercel/analytics';
-import { injectSpeedInsights } from '@vercel/speed-insights';
 
 @Component({
   selector: 'app-root',
@@ -18,11 +16,12 @@ export class App implements OnInit {
 
   private platformId = inject(PLATFORM_ID);
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     if (isPlatformBrowser(this.platformId)) {
+      const { inject: injectAnalytics } = await import('@vercel/analytics');
+      const { injectSpeedInsights } = await import('@vercel/speed-insights');
       injectAnalytics();
       injectSpeedInsights();
-      console.log('KajitA online e monitorada! 🚀');
     }
   }
 }
