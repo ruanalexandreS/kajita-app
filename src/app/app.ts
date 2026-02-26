@@ -1,11 +1,10 @@
-import { Component, signal, OnInit } from '@angular/core';
+import { Component, signal, OnInit, PLATFORM_ID, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { inject as injectAnalytics } from '@vercel/analytics';
 import { injectSpeedInsights } from '@vercel/speed-insights';
 import { isPlatformBrowser } from '@angular/common';
-import { PLATFORM_ID, inject } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -16,14 +15,13 @@ import { PLATFORM_ID, inject } from '@angular/core';
 })
 export class App implements OnInit {
   protected readonly title = signal('KajitA');
-  ngOnInit(): void {
-    // Inicializa a monitorização de tráfego assim que o site carrega
-    injectAnalytics();
-    injectSpeedInsights();
-    const platformId = inject(PLATFORM_ID);
-    if (isPlatformBrowser(platformId)) {
+ngOnInit(): void {
+    const platformId = inject(PLATFORM_ID); // Identifica onde o código está rodando
+
+    if (isPlatformBrowser(platformId)) { // Só entra aqui se for no navegador do cliente
       injectAnalytics();
       injectSpeedInsights();
+      console.log('Vercel Analytics ativado no navegador! 🚀');
     }
   }
 }
